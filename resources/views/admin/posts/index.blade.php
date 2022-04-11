@@ -29,7 +29,8 @@
                     <th scope="row">{{ $post->id }}</th> 
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->slug }}</td>
-                    <td>{{ $post->category->label }}</td>
+                     <td>{{ $post->category_id }}</td> 
+                    {{-- @php var_dump($post) @endphp --}}
                     <td>{{ $post->created_at }}</td>
                     <td class="d-flex justify-content-end align-items-center">
                       <form action="{{ route('admin.posts.destroy', $post->id) }}"

@@ -23,7 +23,21 @@
     <form action="{{ route('admin.posts.store') }}" method="POST">
         @csrf
         <div class="row">
-            
+            <div class="col-4 mb-3 form-group">
+                <label for="category">Category: </label>
+                <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                    <option value="">No Category</option>
+                    @foreach($categories as $category)
+                    <option @if(old('category_id', $post->category_id) == $category->id) selected @endif value="{{ $category->id }}">{{ $category->label }}</option>
+                    @endforeach
+                </select>
+                {{-- Display error --}}
+                @error('category_id')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div> 
             <div class="col-4">
                 <div class="mb-3"> 
                     <label for="title" class="form-label">Title</label>
